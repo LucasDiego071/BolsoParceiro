@@ -20,4 +20,6 @@ Se você é um desenvolvedor interessado em contribuir para o BolsoParc. Valoriz
 
 ---
 
-**EM DESENVOLVIMENTO**!!
+***Bibliotecas Usadas:**
+Streamlit
+Pandas
