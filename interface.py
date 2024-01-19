@@ -12,21 +12,24 @@ st.image("logo.png")
 
 st.title("Bolso :blue[Parceiro]")
 
-st.text("Bem vindo ao Bolso parceiro, Aqui temos a intenção de Organizar suas finanças!")
+st.text("Bem vindo ao Bolso parceiro!\nAqui temos a intenção de Organizar suas finanças.")
 
-nome = st.text_input("Insira Seu Nome:", "Joãozinho da Silva")
+st.divider()
 
-renda = st.text_input("Insira sua rendas mensais:", "1800.00; 2000.00; 300.00")
+nome = st.text_input("Insira seu nome:", "Joãozinho da Silva")
 
-gastos = st.text_input("Insira seus gastos fixosm mensais:",
+renda = st.text_input("Insira sua renda mensal:", "1800.00; 2000.00; 300.00")
+
+gastos = st.text_input("Insira seus gastos fixos mensais:",
                        "Aluguel = 980.00; Agua = 180.00; Luz = 200.00")
 
 gastos02 = st.text_input(
     "Insira seus gastos extras mensais:", "Cinema = 100.00; Roupas = 300.00")
 
-date = st.date_input("Insira o mês que vai ser organizado:",
+date = st.date_input("Insira o mês a ser organizado:",
                      datetime.date(2024, 2, 1))
 
+st.divider()
 # ===================Tratamentos de dados===================
 perfil = user.Usuarios(nome)
 
@@ -77,8 +80,10 @@ financas = dados_financeiros.Dados_financeiros(income, gastos_totais)
 mes = mes.Mes(date, perfil, financas)
 
 # ===================Gerar Tabela===================
-st.write(f"{perfil.nome}")
+st.write(f"<center>{perfil.nome}</center>", unsafe_allow_html=True)
 st.write(f"{mes.data}")
+st.text("")
+st.text("")
 
 lista01 = []
 for gastos_fixos in financas.gastos_fixos:
@@ -101,14 +106,17 @@ gastos02 = financas.calcular_gastos_extras()
 resto01 = renda01 - gastos01
 # Exibindo as tabelas usando st.dataframe()
 st.write(f"Seu mês inicia com: R${renda01}")
+st.text("")
 st.write("Gatos Fixos:")
 st.dataframe(df_gastos_fixos)
-st.write(f"Após o uso para pagar seus gastos fixos restam: R${
+st.text("")
+st.write(f"Após o pagamento dos seus gastos fixos, restam: R${
          renda01 - gastos01}")
 st.write(f"Você pode distribuir esse valor entre os gastos extras abaixo.")
 st.write("Gastos_Extras:")
 st.dataframe(df_gastos_extras)
-st.write(f"Caso você gaste o restante com todos os gastos extras, o restante do dinheiro sera: R${
+st.text("")
+st.write(f"Caso você gaste o restante com todos os gastos extras, o saldo final será: R${
          resto01 - gastos02}")
 
 # Feito Por Lucas Diego
