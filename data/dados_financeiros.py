@@ -16,7 +16,7 @@ class Dados_financeiros:
         for fixo in self.gastos_fixos:
             self.total_Gastos_Fixos += fixo.valor
         return self.total_Gastos_Fixos
-
+        
     def calcular_gastos_gerais(self):
         self.total_Gastos_gerais = 0
         for gasto in self.gastos:
